@@ -3,6 +3,7 @@
 
 # Logging
 *.log
+*.idea
 
 # Project meta
 *.sublime-workspace

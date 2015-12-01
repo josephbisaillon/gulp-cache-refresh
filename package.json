@@ -1,7 +1,7 @@
 {
   "name": "gulp-cache-refresh",
   "version": "1.0.0",
-  "description": "Refreshes client cache for JS and CSS files by appending a build ID or string based on the current date/time",
+  "description": "Refreshes client cache for JS and CSS files by appending a custom object or string based on the current date/time",
   "main": "index.js",
   "scripts": {
     "test": "istanbul test _mocha --report html -- test/*.js --reporter spec"
@@ -15,7 +15,7 @@
     "gulp"
   ],
   "author": {
-    "name": "NRECA-GEMS"
+    "name": "Joseph Bisaillon"
   },
   "license": "MIT",
   "dependencies": {
