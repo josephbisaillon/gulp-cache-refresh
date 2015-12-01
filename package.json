@@ -1,6 +1,6 @@
 {
   "name": "gulp-cache-refresh",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Refreshes client cache for JS and CSS files by appending a custom object or string based on the current date/time",
   "main": "index.js",
   "scripts": {

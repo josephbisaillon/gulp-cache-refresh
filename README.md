@@ -10,9 +10,9 @@ Forked combination of both [gulp-cache-bust](https://www.npmjs.com/package/gulp-
     "temp-write": "1.1.0"
     
 ## Usage
-First, install `gulp-cache-bust` as a development dependency:
+First, install `gulp-cache-refresh` as a development dependency:
 
-`npm install --save gulp-cache-bust`
+`npm install --save gulp-cache-refresh`
 
 Then, add it to your `gulpfile.js`:
     
