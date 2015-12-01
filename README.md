@@ -43,7 +43,7 @@ cache-bust(options)
 ####options.type: value
 
     Type: String
-    Default: 'ErrNoVarPassed'
+    Default: 'timestamp'
 
 Most common usage, appends timestamp to path
 
@@ -55,7 +55,7 @@ Other usages, append any custom variable such as environment build number
     Type: String
     Value: Custom Variable
 
-Misc: Null or Undefined values will be defaulted to 'ErrNoVarPassed'
+Misc: Null or Undefined values will be defaulted to to an appended 'timestamp' it falls differently in code logic to allow for easy customization.
 
 ## License
 MIT

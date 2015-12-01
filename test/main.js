@@ -30,7 +30,7 @@ describe('gulp-cache-refresh', function () {
       contents: fs.readFileSync('test/source/default_test.html')
     });
 
-    var stream = cachebust();
+    var stream = cachebust( { type: 'ErrNoVarPassed'} );
 
     stream.on('error', function(err) {
       should.exist(err);
@@ -58,7 +58,7 @@ describe('gulp-cache-refresh', function () {
       contents: fs.createReadStream('test/source/default_test.html')
     });
 
-    var stream = cachebust();
+    var stream = cachebust( { type: 'ErrNoVarPassed'} );
 
     stream.on('error', function(err) {
       should.exist(err);

@@ -19,7 +19,7 @@ var Busted = function(fileContents, options){
              buildnumber = options.type;
         }
         else{
-             buildnumber = 'ErrNoVarPassed';
+             buildnumber = new Date().getTime();
         }
     }
 
