@@ -1,0 +1,42 @@
+{
+  "name": "gulp-cache-refresh",
+  "version": "1.0.0",
+  "description": "Refreshes client cache for JS and CSS files by appending a build ID or string based on the current date/time",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul test _mocha --report html -- test/*.js --reporter spec"
+  },
+  "keywords": [
+    "gulp-cache-refresh",
+    "timestamp",
+    "cache",
+    "cacherefresh",
+    "assets",
+    "gulp"
+  ],
+  "author": {
+    "name": "NRECA-GEMS"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "0.19.0",
+    "graceful-fs": "4.1.2",
+    "gulp-util": "3.0.7",
+    "map-stream": "0.0.6",
+    "temp-write": "1.1.0"
+  },
+  "devDependencies": {
+    "coveralls": "*",
+    "event-stream": "*",
+    "gulp": "^3.8.8",
+    "istanbul": "*",
+    "mocha": "*",
+    "mocha-lcov-reporter": "*",
+    "should": "~2.1.0"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "gulp-cache-refresh@1.0.0",
+  "_shasum": "25436a8d981fb834621f4c4ad408be5c3c6c1c7d",
+  "_resolved": "file:../../../../WebstormProjects/gulp-cache-refresh/gulp-cache-refresh-1.0.0.tgz",
+  "_from": "../../../../WebstormProjects/gulp-cache-refresh/gulp-cache-refresh-1.0.0.tgz"
+}

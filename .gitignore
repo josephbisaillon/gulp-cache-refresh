@@ -1,0 +1,14 @@
+# OS
+.DS_Store
+
+
+# Logging
+*.log
+*.idea
+
+# Don't commit dependencies!
+node_modules
+
+# Generated files
+tmp
+coverage
