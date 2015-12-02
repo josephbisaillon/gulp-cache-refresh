@@ -5,52 +5,55 @@ var path = require('path'),
     gutil = require('gulp-util'),
     map = require('map-stream'),
     tempWrite = require('temp-write'),
-    $ = require('cheerio');
+    cheerio = require('cheerio');
+
+
+function loadAttribute(content) {
+    if (content.name.toLowerCase() === 'link') {
+        return content.attribs.href;
+    }
+
+
+    if (content.name.toLowerCase() === 'script') {
+        return content.attribs.src;
+    }
+
+    throw "No content awaited in this step of process";
+}
 
 var Busted = function(fileContents, options){
 
+    var self = this, $ = cheerio.load(fileContents);
 
-    if (options.type === 'timestamp') {
-        var timestamp = new Date().getTime();
-    }
-    else {
-        var buildnumber;
-        if ( typeof(options.type) !== "undefined" && options.type !== null ) {
-             buildnumber = options.type;
-        }
-        else{
-             buildnumber = new Date().getTime();
-        }
-    }
+    self.timestamp = function(fileContents, originalAttrValue, options) {
+        var originalAttrValueWithoutCacheBusting = originalAttrValue.split("?")[0];
+        return fileContents.replace(originalAttrValue, originalAttrValueWithoutCacheBusting + '?t=' + options.currentTimestamp);
+    };
 
-    var protocolRegEx = /^http(s)?/,
-        $scripts = $(fileContents).find('script'),
-        $styles = $(fileContents).find('link[rel=stylesheet]');
+    self.customTag =  function(fileContents, originalAttrValue, options) {
+        var originalAttrValueWithoutCacheBusting = originalAttrValue.split("?")[0];
+        return fileContents.replace(originalAttrValue, originalAttrValueWithoutCacheBusting + '?t=' + options.customTag);
+    };
 
-    // Loop the stylesheet hrefs
-    for (var i = 0; i < $styles.length; i++) {
-        var styleHref = $styles[i].attribs.href;
+    options = {
+        basePath : options.basePath || "",
+        type : options.type || "timestamp",
+        currentTimestamp : new Date().getTime(),
+        customTag: options.type
+    };
+
+    var protocolRegEx = /^http(s)?/, elements = $('script[src], link[rel=stylesheet][href]');
+
+    for (var i = 0, len = elements.length; i < len; i++) {
+        var originalAttrValue = loadAttribute(elements[i]);
 
         // Test for http(s) and don't cache bust if (assumed) served from CDN
-        if (!protocolRegEx.test(styleHref)) {
-            if (options.type === 'timestamp') {
-                fileContents = fileContents.replace(styleHref, styleHref + '?t=' + timestamp);
-            } else {
-                fileContents = fileContents.replace(styleHref, styleHref + '?t=' + buildnumber);
+        if (!protocolRegEx.test(originalAttrValue)) {
+            if (options.type === "timestamp") {
+                fileContents = self[options.type](fileContents, originalAttrValue, options);
             }
-        }
-    }
-
-    // Loop the script srcs
-    for (var i = 0; i < $scripts.length; i++) {
-        var scriptSrc = $scripts[i].attribs.src;
-
-        // Test for http(s) and don't cache bust if (assumed) served from CDN
-        if (!protocolRegEx.test(scriptSrc)) {
-            if (options.type === 'timestamp') {
-                fileContents = fileContents.replace(scriptSrc, scriptSrc + '?t=' + timestamp);
-            } else {
-                fileContents = fileContents.replace(scriptSrc, scriptSrc + '?t=' + buildnumber);
+            else {
+                fileContents = self.customTag(fileContents, originalAttrValue, options);
             }
         }
     }
