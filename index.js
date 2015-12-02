@@ -35,7 +35,6 @@ var Busted = function(fileContents, options){
         if (!protocolRegEx.test(styleHref)) {
             if (options.type === 'timestamp') {
                 fileContents = fileContents.replace(styleHref, styleHref + '?t=' + timestamp);
-                console.log(fileContents);
             } else {
                 fileContents = fileContents.replace(styleHref, styleHref + '?t=' + buildnumber);
             }
@@ -65,7 +64,6 @@ var cachebust = {
 
 module.exports = function (options) {
     return map(function (file, cb) {
-        console.log(file.path);
 
         if (file.isNull()) {
             return cb(null, file);
