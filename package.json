@@ -24,11 +24,11 @@
     "url": "https://github.com/josephbisaillon/gulp-cache-refresh.git"
   },
   "dependencies": {
-    "cheerio": "0.19.0",
-    "graceful-fs": "4.1.2",
-    "gulp-util": "3.0.7",
-    "map-stream": "0.0.6",
-    "temp-write": "1.1.0"
+    "cheerio": "0.22.0",
+    "graceful-fs": "4.1.11",
+    "gulp-util": "3.0.8",
+    "map-stream": "0.0.7",
+    "temp-write": "3.2.0"
   },
   "devDependencies": {
     "coveralls": "*",
@@ -37,6 +37,6 @@
     "istanbul": "*",
     "mocha": "*",
     "mocha-lcov-reporter": "*",
-    "should": "~2.1.0"
+    "should": "~11.2.1"
   }
 }
