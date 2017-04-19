@@ -1,5 +1,7 @@
 # gulp-cache-refresh
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/josephbisaillon/gulp-cache-refresh.svg)](https://greenkeeper.io/)
+
 Forked combination of both [gulp-cache-bust](https://www.npmjs.com/package/gulp-cache-bust) and [cache-bust](https://www.npmjs.com/package/cache-bust), removed old dependencies and added some additional functionality.
 
 ### Static dependency versions to reduce breaks during dependency updates
