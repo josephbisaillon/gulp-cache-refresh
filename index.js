@@ -44,7 +44,7 @@ var Busted = function(fileContents, options){
         customTag: options.type
     };
 
-    var protocolRegEx = /^http(s)?/, elements = $('script[src], link[rel=stylesheet][href]');
+    var protocolRegEx = /^http(s)?/, elements = $('script[src], link[rel=stylesheet][href], link[rel=icon][href], link[rel="shortcut icon"][href], link[rel=apple-touch-icon][href]');
 
     for (var i = 0, len = elements.length; i < len; i++) {
         var originalAttrValue = loadAttribute(elements[i]);
