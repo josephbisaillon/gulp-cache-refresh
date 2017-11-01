@@ -26,12 +26,14 @@ var Busted = function(fileContents, options){
     var self = this, $ = cheerio.load(fileContents);
 
     self.timestamp = function(fileContents, originalAttrValue, options) {
-        var originalAttrValueWithoutCacheBusting = originalAttrValue.split("?")[0];
+        var lastIndex = originalAttrValue.lastIndexOf('?t=');
+        var originalAttrValueWithoutCacheBusting = ( lastIndex >= 0 ) ? originalAttrValue.substr(0, lastIndex) : originalAttrValue;
         return fileContents.replace(originalAttrValue, originalAttrValueWithoutCacheBusting + '?t=' + options.currentTimestamp);
     };
 
     self.customTag =  function(fileContents, originalAttrValue, options) {
-        var originalAttrValueWithoutCacheBusting = originalAttrValue.split("?")[0];
+        var lastIndex = originalAttrValue.lastIndexOf('?t=');
+        var originalAttrValueWithoutCacheBusting = ( lastIndex >= 0 ) ? originalAttrValue.substr(0, lastIndex) : originalAttrValue;
         return fileContents.replace(originalAttrValue, originalAttrValueWithoutCacheBusting + '?t=' + options.customTag);
     };
 
