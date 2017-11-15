@@ -1,6 +1,6 @@
 {
-  "name": "gulp-cache-refresh",
-  "version": "1.1.0",
+  "name": "gulp-cache-refresh-php",
+  "version": "1.1.2",
   "description": "Refreshes client cache for JS and CSS files by appending a custom object or string based on the current date/time",
   "main": "index.js",
   "scripts": {
@@ -12,16 +12,17 @@
     "cache",
     "cacherefresh",
     "assets",
-    "gulp"
+    "gulp",
+    "php"
   ],
   "author": {
-    "name": "Joseph Bisaillon",
+    "name": "Joseph Bisaillon updated by Gabriel Xavier",
     "url": "http://www.josephbisaillon.com"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/josephbisaillon/gulp-cache-refresh.git"
+    "url": "https://github.com/gabrielxavier/gulp-cache-refresh"
   },
   "dependencies": {
     "cheerio": "0.19.0",

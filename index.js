@@ -26,12 +26,14 @@ var Busted = function(fileContents, options){
     var self = this, $ = cheerio.load(fileContents);
 
     self.timestamp = function(fileContents, originalAttrValue, options) {
-        var originalAttrValueWithoutCacheBusting = originalAttrValue.split("?")[0];
+        var lastIndex = originalAttrValue.lastIndexOf('?t=');
+        var originalAttrValueWithoutCacheBusting = ( lastIndex >= 0 ) ? originalAttrValue.substr(0, lastIndex) : originalAttrValue;
         return fileContents.replace(originalAttrValue, originalAttrValueWithoutCacheBusting + '?t=' + options.currentTimestamp);
     };
 
     self.customTag =  function(fileContents, originalAttrValue, options) {
-        var originalAttrValueWithoutCacheBusting = originalAttrValue.split("?")[0];
+        var lastIndex = originalAttrValue.lastIndexOf('?t=');
+        var originalAttrValueWithoutCacheBusting = ( lastIndex >= 0 ) ? originalAttrValue.substr(0, lastIndex) : originalAttrValue;
         return fileContents.replace(originalAttrValue, originalAttrValueWithoutCacheBusting + '?t=' + options.customTag);
     };
 
@@ -42,7 +44,7 @@ var Busted = function(fileContents, options){
         customTag: options.type
     };
 
-    var protocolRegEx = /^http(s)?/, elements = $('script[src], link[rel=stylesheet][href]');
+    var protocolRegEx = /^http(s)?/, elements = $('script[src], link[rel=stylesheet][href], link[rel=icon][href], link[rel="shortcut icon"][href], link[rel=apple-touch-icon][href]').not(".ignore");
 
     for (var i = 0, len = elements.length; i < len; i++) {
         var originalAttrValue = loadAttribute(elements[i]);
